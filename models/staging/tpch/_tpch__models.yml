@@ -1,0 +1,305 @@
+version: 2
+
+models:
+  - name: stg_tpch__customer
+    description: "Tabla staging que normaliza y transforma los datos de clientes desde la capa Bronze."
+    columns:
+      - name: c_custkey
+        data_type: number
+        description: "Clave primaria de cada cliente."
+        tests:
+          - unique
+          - not_null
+
+      - name: c_name
+        data_type: varchar
+        description: "Nombre del cliente."
+
+      - name: c_address
+        data_type: varchar
+        description: ""
+
+      - name: c_nationkey
+        data_type: number
+        description: ""
+
+      - name: c_phone
+        data_type: varchar
+        description: ""
+
+      - name: c_acctbal
+        data_type: number
+        description: ""
+
+      - name: c_mktsegment
+        data_type: varchar
+        description: ""
+
+      - name: c_comment
+        data_type: varchar
+        description: ""
+
+      - name: ingest_timestamp
+        data_type: timestamp_ltz
+        description: ""
+
+  - name: stg_tpch__lineitem
+    description: ""
+    columns:
+      - name: l_orderkey
+        data_type: number
+        description: ""
+
+      - name: l_partkey
+        data_type: number
+        description: ""
+
+      - name: l_suppkey
+        data_type: number
+        description: ""
+
+      - name: l_linenumber
+        data_type: number
+        description: ""
+
+      - name: l_quantity
+        data_type: number
+        description: ""
+
+      - name: l_extendedprice
+        data_type: number
+        description: ""
+
+      - name: l_discount
+        data_type: number
+        description: ""
+
+      - name: l_tax
+        data_type: number
+        description: ""
+
+      - name: l_returnflag
+        data_type: varchar
+        description: ""
+
+      - name: l_linestatus
+        data_type: varchar
+        description: ""
+
+      - name: l_shipdate
+        data_type: date
+        description: ""
+
+      - name: l_commitdate
+        data_type: date
+        description: ""
+
+      - name: l_receiptdate
+        data_type: date
+        description: ""
+
+      - name: l_shipinstruct
+        data_type: varchar
+        description: ""
+
+      - name: l_shipmode
+        data_type: varchar
+        description: ""
+
+      - name: l_comment
+        data_type: varchar
+        description: ""
+
+      - name: ingest_timestamp
+        data_type: timestamp_ltz
+        description: ""
+
+  - name: stg_tpch__nation
+    description: ""
+    columns:
+      - name: n_nationkey
+        data_type: number
+        description: ""
+
+      - name: n_name
+        data_type: varchar
+        description: ""
+
+      - name: n_regionkey
+        data_type: number
+        description: ""
+
+      - name: n_comment
+        data_type: varchar
+        description: ""
+
+      - name: ingest_timestamp
+        data_type: timestamp_ltz
+        description: ""
+
+  - name: stg_tpch__orders
+    description: ""
+    columns:
+      - name: o_orderkey
+        data_type: number
+        description: ""
+
+      - name: o_custkey
+        data_type: number
+        description: ""
+
+      - name: o_orderstatus
+        data_type: varchar
+        description: ""
+
+      - name: o_totalprice
+        data_type: number
+        description: ""
+
+      - name: o_orderdate
+        data_type: date
+        description: ""
+
+      - name: o_orderpriority
+        data_type: varchar
+        description: ""
+
+      - name: o_clerk
+        data_type: varchar
+        description: ""
+
+      - name: o_shippriority
+        data_type: number
+        description: ""
+
+      - name: o_comment
+        data_type: varchar
+        description: ""
+
+      - name: ingest_timestamp
+        data_type: timestamp_ltz
+        description: ""
+
+  - name: stg_tpch__part
+    description: ""
+    columns:
+      - name: p_partkey
+        data_type: number
+        description: ""
+
+      - name: p_name
+        data_type: varchar
+        description: ""
+
+      - name: p_mfgr
+        data_type: varchar
+        description: ""
+
+      - name: p_brand
+        data_type: varchar
+        description: ""
+
+      - name: p_type
+        data_type: varchar
+        description: ""
+
+      - name: p_size
+        data_type: number
+        description: ""
+
+      - name: p_container
+        data_type: varchar
+        description: ""
+
+      - name: p_retailprice
+        data_type: number
+        description: ""
+
+      - name: p_comment
+        data_type: varchar
+        description: ""
+
+      - name: ingest_timestamp
+        data_type: timestamp_ltz
+        description: ""
+
+  - name: stg_tpch__partsupp
+    description: ""
+    columns:
+      - name: ps_partkey
+        data_type: number
+        description: ""
+
+      - name: ps_suppkey
+        data_type: number
+        description: ""
+
+      - name: ps_availqty
+        data_type: number
+        description: ""
+
+      - name: ps_supplycost
+        data_type: number
+        description: ""
+
+      - name: ps_comment
+        data_type: varchar
+        description: ""
+
+      - name: ingest_timestamp
+        data_type: timestamp_ltz
+        description: ""
+
+  - name: stg_tpch__region
+    description: ""
+    columns:
+      - name: r_regionkey
+        data_type: number
+        description: ""
+
+      - name: r_name
+        data_type: varchar
+        description: ""
+
+      - name: r_comment
+        data_type: varchar
+        description: ""
+
+      - name: ingest_timestamp
+        data_type: timestamp_ltz
+        description: ""
+
+  - name: stg_tpch__supplier
+    description: ""
+    columns:
+      - name: s_suppkey
+        data_type: number
+        description: ""
+
+      - name: s_name
+        data_type: varchar
+        description: ""
+
+      - name: s_address
+        data_type: varchar
+        description: ""
+
+      - name: s_nationkey
+        data_type: number
+        description: ""
+
+      - name: s_phone
+        data_type: varchar
+        description: ""
+
+      - name: s_acctbal
+        data_type: number
+        description: ""
+
+      - name: s_comment
+        data_type: varchar
+        description: ""
+
+      - name: ingest_timestamp
+        data_type: timestamp_ntz
+        description: ""
