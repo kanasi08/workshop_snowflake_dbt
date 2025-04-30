@@ -37,12 +37,12 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   workshop_snowflake_dbt:
     marts:
-      +database: "DEV_GOLD_DB"
+      +database: "{{ env_var ('DBT_ENVIRONMENT') }}_GOLD_DB"
       +schema: "VENTAS"
       +materialized: table
 
     staging:
-      +database: "DEV_SILVER_DB"
+      +database: "{{ env_var ('DBT_ENVIRONMENT') }}_SILVER_DB"
       +schema: "VENTAS"
       +materialized: table
  
