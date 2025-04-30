@@ -22,6 +22,11 @@ models:
       - name: c_nationkey
         data_type: number
         description: ""
+        tests:
+        # Este test verifica que cada c_nationkey en la tabla stg_tpch__customer tenga una coincidencia en stg_tpch__nation, asegurando la integridad referencial.
+          - relationships:
+              to: ref('stg_tpch__nation')
+              field: n_nationkey
 
       - name: c_phone
         data_type: varchar
@@ -49,14 +54,28 @@ models:
       - name: l_orderkey
         data_type: number
         description: ""
+        tests:
+          - relationships:
+              to: ref('stg_tpch__orders')
+              field: o_orderkey
+        
 
       - name: l_partkey
         data_type: number
         description: ""
+        tests:
+          - relationships:
+              to: ref('stg_tpch__part')
+              field: p_partkey
+              severity: warn
 
       - name: l_suppkey
         data_type: number
         description: ""
+        tests:
+          - relationships:
+              to: ref('stg_tpch__supplier')
+              field: s_suppkey
 
       - name: l_linenumber
         data_type: number
@@ -128,6 +147,10 @@ models:
       - name: n_regionkey
         data_type: number
         description: ""
+        test:
+        - relationships:
+              to: ref('stg_tpch__region')
+              field: r_regionkey
 
       - name: n_comment
         data_type: varchar
@@ -147,6 +170,11 @@ models:
       - name: o_custkey
         data_type: number
         description: ""
+        test:
+        - relationships:
+              to: ref('stg_tpch__customer')
+              field: c_custonkey
+
 
       - name: o_orderstatus
         data_type: varchar
@@ -229,10 +257,18 @@ models:
       - name: ps_partkey
         data_type: number
         description: ""
+        test:
+        - relationships:
+              to: ref('stg_tpch__part')
+              field: p_partkey
 
       - name: ps_suppkey
         data_type: number
         description: ""
+        test:
+        - relationships:
+              to: ref('stg_tpch__supplier')
+              field: s_suppkey
 
       - name: ps_availqty
         data_type: number
