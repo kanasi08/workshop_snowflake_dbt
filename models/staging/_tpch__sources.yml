@@ -4,6 +4,11 @@ sources:
   - name: tpch
     database: "{{ env_var ('DBT_ENVIRONMENT') }}_bronze_db"
     schema: TPCH
+    freshness:
+      warn_after: {count: 12, period: hour}  # Warning si los datos tienen más de 12 horas
+      # error_after: {count: 24, period: hour} # Error si los datos tienen más de 24 horas
+    loaded_at_field: ingest_timestamp # Campo usado para medir la frescura de los datos
+
     tables:
       - name: customer
         columns:

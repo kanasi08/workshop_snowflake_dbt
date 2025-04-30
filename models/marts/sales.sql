@@ -19,16 +19,17 @@ select
     n.n_name as pais,
     o.o_orderdate as fecha,
     c.c_mktsegment as industria,
-    sum(l.l_extendedprice * (1 - l.l_discount)) as ventas
+    sum(coalesce(l.l_extendedprice,0) * (1 - l.l_discount)) as ventas,
+    sum (coalesce(o.o_totalprice,0)) precioTotal
 from 
     orders as o
-join 
+left join 
     customer as c on o.o_custkey = c.c_custkey
-join 
+left join 
     lineitem as l on o.o_orderkey = l.l_orderkey
-join 
+left join 
     nation as n on c.c_nationkey = n.n_nationkey
-join 
+left join 
     region as r on r.r_regionkey = n.n_regionkey
 group by 
     r.r_name,
